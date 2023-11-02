@@ -1,33 +1,26 @@
-function register() {
+function login() {
   var response = "";
 
   var jsonData = new Object();
   jsonData.email = document.getElementById("email").value;
   jsonData.password = document.getElementById("password").value;
-  var confirmPassword = document.getElementById("confirmPassword").value;
 
-  if (
-    jsonData.email == "" ||
-    jsonData.password == "" ||
-    confirmPassword == ""
-  ) {
+  if (jsonData.email == "" || jsonData.password == "") {
     document.getElementById("error").innerHTML = "All fields are required!";
-    return;
-  } else if (jsonData.password != confirmPassword) {
-    document.getElementById("error").innerHTML = "Password does not match!";
     return;
   }
   var request = new XMLHttpRequest();
 
-  request.open("POST", "/register", true);
+  request.open("POST", "/login", true);
   request.setRequestHeader("Content-Type", "application/json");
   request.onload = function () {
     response = JSON.parse(request.responseText);
     console.log(response);
-    if (response.message == undefined) {
-      window.location.href = "index.html";
+    if (response.message == "Login successful!") {
+      sessionStorage.setItem("email", jsonData.email);
+      window.location.href = "home.html";
     } else {
-      document.getElementById("error").innerHTML = "Authentication failed!";
+      document.getElementById("error").innerHTML = "Invalid credentials!";
     }
   };
 
