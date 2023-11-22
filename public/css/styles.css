@@ -1,7 +1,16 @@
 .card-header {
     background-color: aliceblue;
+<<<<<<< HEAD
     
     .table-striped-custom tbody tr:nth-of-type(odd) {
         background-color: #f2f2f2; /* Alternate row color */
         }
    } 
+=======
+}
+
+.table-striped-custom tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+    /* Alternate row color */
+}
+>>>>>>> 8999a6a8ac9784a671fa80eabca1f5ccaf06dd0a

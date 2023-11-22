@@ -11,11 +11,17 @@ const { register,login } = require('./utils/UserUtil')
 app.post('/register', register);
 app.post('/login', login);
 
+const { viewResources } = require('./utils/ResourceUtil')
+app.get('/view-resources', viewResources);
+
 const { addResource } = require('./utils/ResourceUtil')
 app.post('/add-resource', addResource);
 
 app.get('/', (req, res) => { 
  res.sendFile(__dirname + "/public/" + startPage); 
 }) 
-app.listen(PORT, function () { 
+const server=app.listen(PORT, function () { 
 console.log(`Demo project at: ${PORT}!`); });
+
+
+module.exports = { app, server }
