@@ -35,6 +35,7 @@ async function register(req, res) {
     return res.status(500).json({ message: error.message });
   }
 }
+
 async function login(req, res) {
   try {
     const email = req.body.email;
@@ -55,10 +56,10 @@ async function login(req, res) {
     return res.status(500).json({ message: error.message });
   }
 }
+
 module.exports = {
   readJSON,
   writeJSON,
   register,
   login,
-
 };
